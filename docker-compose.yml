@@ -21,6 +21,10 @@ services:
       - .:/var/www
     networks:
       - app
+    links:
+      - redis
+    depends_on:
+      - redis
     command: bundle exec thin -R config.ru start
 
 networks:
