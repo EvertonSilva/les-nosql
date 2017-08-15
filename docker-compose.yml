@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  redis:
+    image: 'redis:3.2-alpine'
+    container_name: poc_redis
+    command: redis-server
+    ports:
+      - '6379:6379'
+    networks:
+      - app
+
+  web:
+    build: .
+    container_name: poc_nosql
+    image: everton/sinatra:v2
+    ports:
+      - '3000:3000'
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    networks:
+      - app
+    command: bundle exec thin -R config.ru start
+
+networks:
+  app:
