@@ -3,7 +3,7 @@ require_relative 'models/user'
 require_relative 'persistence/connection'
 
 db = ConnectionFactory.get_connection
-user = User.new "talles@fatec.sp.gov.br", "lalalala"
+user = User.new "talles@fatec.sp.gov.br", "123456"
 authorized = false
 
 get '/' do
@@ -24,7 +24,8 @@ end
 
 get '/dashboard' do
   redirect '/' unless authorized
-  "It works"
+  @user = user
+  slim :dashboard
 end
 
 get '/logout' do

@@ -1,0 +1,9 @@
+nav
+  .nav-wrapper
+    ul.right
+      li
+        a
+          i.material-icons.left account_circle
+          = "Hello, #{@user.email.split("@")[0].capitalize}"
+.content
+  h1 Dashboard page
