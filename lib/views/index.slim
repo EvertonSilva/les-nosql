@@ -1,2 +1,9 @@
-h1
-  = @message
+h1 Welcome, stranger!
+form action="/login" method="post"
+  div
+    label for="email" Email
+    input type="email" id="email" name="email"
+  div
+    label for="passwd" Senha
+    input type="password" id="passwd" name="passwd"
+  input type="submit" value="logar"
