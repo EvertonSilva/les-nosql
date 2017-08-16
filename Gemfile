@@ -9,9 +9,9 @@ gem 'sass'
 gem 'thin'
 gem 'rack'
 gem 'redis'
+gem 'dotenv'
 
 group :development, :test do
-  gem 'dotenv'
   gem 'rspec'
   gem 'rack-test'
 end
