@@ -3,7 +3,10 @@ html
   head
     title Sinatra Redis - Example
     meta charset="utf-8"
-    link href="assets/aplication.css"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    link href="assets/application.css" rel="stylesheet" media="all"
   body
     .main-wrapper
-      == yield
+      .container
+        == yield

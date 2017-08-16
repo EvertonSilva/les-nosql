@@ -6,8 +6,6 @@ GEM
     dotenv (2.2.1)
     eventmachine (1.2.5)
     ffi (1.9.18)
-    materialize-sass (0.96.2)
-      sass (~> 3.3)
     mustermann (1.0.0)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -57,7 +55,6 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.8.4)
   dotenv
-  materialize-sass (~> 0.96.1)
   rack
   rack-test
   redis
