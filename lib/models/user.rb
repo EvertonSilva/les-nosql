@@ -1,8 +1,8 @@
 class User
-  attr_accessor :id, :email, :passwd, :rember_token
+  attr_accessor :id, :email, :passwd
 
   def initialize(email, passwd)
-    @id = 1
+    @id = SecureRandom.uuid[0..3]
     @email = email
     @passwd = passwd
   end

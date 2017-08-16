@@ -7,6 +7,8 @@ class ConnectionFactory
     else
       Redis.new(:host => 'redis', :port => 6379)
     end
+    # Redis.new(:host => 'redis', :port => 6379)
+
   end
 
 end

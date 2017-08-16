@@ -6,15 +6,21 @@ db = ConnectionFactory.get_connection
 user = User.new "talles@fatec.sp.gov.br", "123456"
 authorized = false
 
+configure do
+  enable :sessions
+end
+
 get '/' do
   slim :index
 end
 
 post '/login' do
-  if user.is_equal?(User.new(params[:email], params[:passwd]))
-    if db.get(user.id).nil?
-      token = SecureRandom.urlsafe_base64
-      db.set user.id, token
+  @user = user if user.email == params[:email]
+  if @user.passwd == params[:passwd]
+    if db.get(@user.id).nil?
+      # token = SecureRandom.urlsafe_base64
+      db.set @user.id, [@user.id, @user.email, @user.passwd].join(',')
+      session[:user_id] = @user.id
     end
     authorized = true
     redirect '/dashboard'
@@ -24,12 +30,18 @@ end
 
 get '/dashboard' do
   redirect '/' unless authorized
-  @user = user
+  @user = User.new(nil, nil)
+  fields = db.get(session[:user_id]).split(',')
+
+  @user.id = fields[0]
+  @user.email = fields[1]
+  @user.passwd = fields[2]
+
   slim :dashboard
 end
 
 get '/logout' do
-  u = db.get user.id
-  db.del u.id
+  session.destroy
+  authorized = false
   redirect '/'
 end

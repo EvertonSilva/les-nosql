@@ -5,5 +5,9 @@ nav
         a
           i.material-icons.left account_circle
           = "Hello, #{@user.email.split("@")[0].capitalize}"
+      li
+        a href="/logout"
+          i.material-icons.left close
+          = "logout"
 .content
   h1 Dashboard page
